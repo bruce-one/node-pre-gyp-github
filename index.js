@@ -87,7 +87,7 @@ NodePreGypGithub.prototype.uploadAsset = function(cfg){
 		id: this.release.id,
 		repo: this.repo,
 		name: cfg.fileName,
-		file: cfg.filePath,
+		file: fs.createReadStream(cfg.filePath),
     contentType: mime.contentType(cfg.fileName) || 'application/octet-stream',
     contentLength: fs.statSync(cfg.filePath).size,
 	}, function(err){
